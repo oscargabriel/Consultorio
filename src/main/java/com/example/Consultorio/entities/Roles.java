@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 
 import java.util.Set;
 
+/**
+ * clase rol se usa para los permisos para las solicitudes http
+ */
 @Entity
 public class Roles {
 
