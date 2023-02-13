@@ -43,11 +43,11 @@ public class Usuarios {
 
 //============================================ASOCIACIONES============================================
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "USER_ROLES",
+    @JoinTable(name = "USUARIO_ROL",
         joinColumns = {
                 @JoinColumn(name = "usuario_id", foreignKey = @ForeignKey(name = "fk_usuariorol_usuarios"))
         },
         inverseJoinColumns = {
-                @JoinColumn(name = "roles_id",foreignKey = @ForeignKey(name = "fk_usuariorol_roles")) })
+                @JoinColumn(name = "rol_id",foreignKey = @ForeignKey(name = "fk_usuariorol_roles")) })
     private Set<Roles> roles;
 }

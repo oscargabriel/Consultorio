@@ -32,12 +32,12 @@ public class Consultas {
 
 //============================================ASOCIACIONES============================================
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "doctores_pk",
-        foreignKey = @ForeignKey(name = "fk_Consulta_Doctores"))
+    @JoinColumn(name = "doctor_id",
+        foreignKey = @ForeignKey(name = "fk_Consultas_Doctores"))
     Doctores doctor;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "pacientes_pk",
-            foreignKey = @ForeignKey(name = "fk_Consulta_Pacientes"))
+    @JoinColumn(name = "paciente_id",
+            foreignKey = @ForeignKey(name = "fk_Consultas_Pacientes"))
     Pacientes pacientes;
 }

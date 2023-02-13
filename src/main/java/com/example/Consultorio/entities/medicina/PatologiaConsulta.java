@@ -13,23 +13,23 @@ public class PatologiaConsulta {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    String Observacion;
+    @Column(length = 200, nullable = false)
+    private String Observacion;
 
 //============================================ASOCIACIONES============================================
     /**
      * clave foranea para la sociacion con patologias
      */
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "patologias_id",
-        foreignKey = @ForeignKey(name = "fk_PatologiaConsutla_Patologias"))
+    @JoinColumn(name = "patologia_id",
+        foreignKey = @ForeignKey(name = "fk_PatologiaConsulta_Patologias"))
     Patologias patologia;
 
     /**
      * clave foranea para la sociacion con consultas
      */
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "consutlas_id",
-            foreignKey = @ForeignKey(name = "fk_PatologiaConsutla_Consultas"))
+    @JoinColumn(name = "consulta_id",
+            foreignKey = @ForeignKey(name = "fk_PatologiaConsulta_Consultas"))
     Consultas consulta;
 }
