@@ -2,7 +2,7 @@
 
 db para la administracion de un consultorio
 
-# usando las dependencias
+## usando las dependencias
 
 para la base de datos
 org.postgresql
