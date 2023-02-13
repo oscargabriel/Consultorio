@@ -26,5 +26,56 @@ public class Secretarias {
     @OneToOne
     @JoinColumn(name = "usuario_id",
         foreignKey = @ForeignKey(name = "fk_Usuarios_Secretaria"))
-    Usuarios usuario;
+    private Usuarios usuario;
+
+    public Secretarias() {
+    }
+
+    public Secretarias(Long id, Float salario, LocalDateTime fechaIngreso, LocalDateTime fechaRetiro, Usuarios usuario) {
+        this.id = id;
+        this.salario = salario;
+        this.fechaIngreso = fechaIngreso;
+        this.fechaRetiro = fechaRetiro;
+        this.usuario = usuario;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Float getSalario() {
+        return salario;
+    }
+
+    public void setSalario(Float salario) {
+        this.salario = salario;
+    }
+
+    public LocalDateTime getFechaIngreso() {
+        return fechaIngreso;
+    }
+
+    public void setFechaIngreso(LocalDateTime fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
+    }
+
+    public LocalDateTime getFechaRetiro() {
+        return fechaRetiro;
+    }
+
+    public void setFechaRetiro(LocalDateTime fechaRetiro) {
+        this.fechaRetiro = fechaRetiro;
+    }
+
+    public Usuarios getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuarios usuario) {
+        this.usuario = usuario;
+    }
 }

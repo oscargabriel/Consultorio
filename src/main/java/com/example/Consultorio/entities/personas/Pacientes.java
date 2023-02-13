@@ -21,6 +21,37 @@ public class Pacientes {
     @OneToOne
     @JoinColumn(name = "usuario_id",
         foreignKey = @ForeignKey(name = "fk_Usuarios_Doctores"))
-    Usuarios usuario;
+    private Usuarios usuario;
 
+    public Pacientes() {
+    }
+
+    public Pacientes(Long id, Boolean activo) {
+        this.id = id;
+        this.activo = activo;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
+
+    public Usuarios getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuarios usuario) {
+        this.usuario = usuario;
+    }
 }

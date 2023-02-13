@@ -29,5 +29,61 @@ public class Doctores {
     @OneToOne
     @JoinColumn(name = "usuario_id",
         foreignKey = @ForeignKey(name = "fk_Usuarios_Doctores"))
-    Usuarios usuario;
+    private Usuarios usuario;
+
+    public Doctores(Long id, String MPPS, LocalDateTime fechaIngreso, LocalDateTime fechaGraduacion, String especializacion) {
+        this.id = id;
+        this.MPPS = MPPS;
+        this.fechaIngreso = fechaIngreso;
+        this.fechaGraduacion = fechaGraduacion;
+        this.especializacion = especializacion;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getMPPS() {
+        return MPPS;
+    }
+
+    public void setMPPS(String MPPS) {
+        this.MPPS = MPPS;
+    }
+
+    public LocalDateTime getFechaIngreso() {
+        return fechaIngreso;
+    }
+
+    public void setFechaIngreso(LocalDateTime fechaIngreso) {
+        this.fechaIngreso = fechaIngreso;
+    }
+
+    public LocalDateTime getFechaGraduacion() {
+        return fechaGraduacion;
+    }
+
+    public void setFechaGraduacion(LocalDateTime fechaGraduacion) {
+        this.fechaGraduacion = fechaGraduacion;
+    }
+
+    public String getEspecializacion() {
+        return especializacion;
+    }
+
+    public void setEspecializacion(String especializacion) {
+        this.especializacion = especializacion;
+    }
+
+    public Usuarios getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuarios usuario) {
+        this.usuario = usuario;
+    }
 }
