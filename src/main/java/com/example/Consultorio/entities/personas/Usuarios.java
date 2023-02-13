@@ -15,28 +15,30 @@ public class Usuarios {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(unique = true, nullable = false)
     private int cedula;
 
-    @Column
+    @Column(length = 30, nullable = false)
     private String nombre;
 
-    @Column
+    @Column(length = 30, nullable = false)
     private String apellido;
 
-    @Column
-    private LocalDateTime fecha_nacimiento;
+    @Column(name = "fecha_nacimiento", nullable = false)
+    private LocalDateTime fechaNacimiento;
+    @Column(length = 100, nullable = false)
+    private String direccion;
 
-    @Column
-    private String direcion;
+    @Column(length = 100, nullable = true)
+    private String telefono;
 
-    @Column
+    @Column(length = 40, unique = true, nullable = false)
     private String email;
 
-    @Column
+    @Column(length = 40, unique = true, nullable = false)
     private String usuario;
 
-    @Column
+    @Column(length = 40, nullable = false)
     private String clave;
 
 //============================================ASOCIACIONES============================================

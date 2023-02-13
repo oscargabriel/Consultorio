@@ -11,10 +11,10 @@ public class Tratamientos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(length = 100, nullable = false)
     private String nombre;
 
-    @Column
+    @Column(nullable = false)
     private String descripcion;
 
 //============================================ASOCIACIONES============================================

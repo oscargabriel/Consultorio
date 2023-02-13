@@ -13,16 +13,16 @@ public class Doctores {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(length = 10, nullable = false)
     private String MPPS;
 
-    @Column
+    @Column(nullable = false)
     private LocalDateTime fechaIngreso;
 
-    @Column
+    @Column(nullable = false)
     private LocalDateTime fechaGraduacion;
 
-    @Column
+    @Column(length = 50, nullable = false)
     private String especializacion;
 
 //============================================ASOCIACIONES============================================

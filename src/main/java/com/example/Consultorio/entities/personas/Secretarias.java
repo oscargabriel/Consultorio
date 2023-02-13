@@ -13,11 +13,14 @@ public class Secretarias {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(nullable = false, scale = 2)
     private Float salario;
 
-    @Column
-    private LocalDateTime fecha_ingreso;
+    @Column(name = "fecha_ingreso", nullable = false)
+    private LocalDateTime fechaIngreso;
+
+    @Column(name = "fecha_retiro", nullable = true)
+    private LocalDateTime fechaRetiro;
 
 //============================================ASOCIACIONES============================================
     @OneToOne

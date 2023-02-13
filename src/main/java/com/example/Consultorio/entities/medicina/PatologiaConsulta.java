@@ -6,13 +6,14 @@ import jakarta.persistence.*;
  * clase asosiativa entre consulta y patologia con observaciones del doctor
  */
 @Entity
+//@Table(name = "patologia_consulta")
 public class PatologiaConsulta {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     String Observacion;
 
 //============================================ASOCIACIONES============================================

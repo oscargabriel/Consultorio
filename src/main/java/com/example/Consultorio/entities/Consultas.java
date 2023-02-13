@@ -17,14 +17,19 @@ public class Consultas {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(nullable = false)
     private LocalDateTime fechaInicial;
 
-    @Column
+    @Column(nullable = false)
     private LocalDateTime fechaActual;
 
-    @Column
+    @Column(nullable = true, scale = 2)
+    private Double costo;
+
+    @Column(nullable = true)
     private LocalDateTime proximaConsulta;
+
+
 //============================================ASOCIACIONES============================================
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "doctores_pk",

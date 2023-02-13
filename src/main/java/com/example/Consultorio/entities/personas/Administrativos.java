@@ -13,11 +13,17 @@ public class Administrativos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
+    @Column(length = 50, nullable = false)
     private String funcion;
 
-    @Column
-    private LocalDateTime fecha_ingreso;
+    @Column(nullable = false, scale = 2)
+    private Float salario;
+
+    @Column(name = "fecha_ingreso",nullable = false)
+    private LocalDateTime fechaIngreso;
+
+    @Column(name = "fecha_retiro", nullable = true)
+    private LocalDateTime fechaRetiro;
 
 //============================================ASOCIACIONES============================================
     @OneToOne
