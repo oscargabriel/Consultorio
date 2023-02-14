@@ -6,7 +6,7 @@ import jakarta.persistence.*;
  * clase asosiativa entre consulta y patologia con observaciones del doctor
  */
 @Entity
-//@Table(name = "patologia_consulta")
+@Table(name = "patologia_consulta")
 public class PatologiaConsulta {
 
     @Id
