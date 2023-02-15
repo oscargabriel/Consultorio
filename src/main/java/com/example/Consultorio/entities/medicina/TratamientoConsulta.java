@@ -7,7 +7,6 @@ import jakarta.persistence.*;
  */
 
 @Entity
-@Table(name = "tratamiento_consulta")
 public class TratamientoConsulta {
 
     @Id
