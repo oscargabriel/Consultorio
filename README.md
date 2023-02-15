@@ -42,3 +42,6 @@ entities: entidades que sirven de tablas para la db
 repository: repositorio para llamadas jpa genericas
 
 secuirity: accesos y token
+config:configuraciones 
+service: roles
+
