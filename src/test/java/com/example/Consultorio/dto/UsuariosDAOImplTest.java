@@ -1,6 +1,8 @@
 package com.example.Consultorio.dto;
 
 import com.example.Consultorio.entities.personas.Usuarios;
+import com.example.Consultorio.repository.UsuariosDAO;
+import com.example.Consultorio.repository.UsuariosDAOImpl;
 import org.apache.catalina.LifecycleState;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;

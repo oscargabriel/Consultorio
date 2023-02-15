@@ -1,4 +1,4 @@
-package com.example.Consultorio.dto;
+package com.example.Consultorio.repository;
 
 import com.example.Consultorio.entities.personas.Usuarios;
 import com.example.Consultorio.util.HibernateUtil;
@@ -8,9 +8,11 @@ import jakarta.persistence.Query;
 import org.hibernate.Session;
 import org.hibernate.query.NativeQuery;
 import org.springframework.data.jpa.provider.HibernateUtils;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+@Repository
 public class UsuariosDAOImpl implements UsuariosDAO{
 
 

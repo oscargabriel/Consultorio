@@ -1,4 +1,4 @@
-package com.example.Consultorio.dto;
+package com.example.Consultorio.repository;
 
 import com.example.Consultorio.entities.personas.Usuarios;
 
@@ -14,4 +14,6 @@ public interface UsuariosDAO {
     List<Usuarios> findAll();
 
     Usuarios findByUsername(String username);
+
+
 }

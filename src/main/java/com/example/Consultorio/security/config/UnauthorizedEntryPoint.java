@@ -1,8 +1,9 @@
-package com.example.Consultorio.security.jwt;
+package com.example.Consultorio.security.config;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jdk.jfr.Category;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.core.AuthenticationException;
@@ -10,21 +11,17 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.io.Serializable;
 
-/**
- * Rechaza peticiones no autenticadas
- * devolviendo un codigo 401 unauthorized
- */
 @Component
-public class JwtAuthEntryPoint implements AuthenticationEntryPoint {
+public class UnauthorizedEntryPoint implements AuthenticationEntryPoint, Serializable {
 
-    private static final Logger log = LoggerFactory.getLogger(JwtAuthEntryPoint.class);
 
     @Override
     public void commence(HttpServletRequest request,
                          HttpServletResponse response,
                          AuthenticationException authException) throws IOException, ServletException {
-        log.error("Error No Autorizado: {}", authException.getMessage());
-        response.sendError(HttpServletResponse.SC_UNAUTHORIZED,"Error: No Autorizado");
+        // todo logger
+        response.sendError(HttpServletResponse.SC_UNAUTHORIZED,"Error: No authorizado");
     }
 }
