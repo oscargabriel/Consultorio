@@ -33,7 +33,7 @@ config: configuracion general
 
 controller: administracion de solicitudes http
 
-dto: llamadas a la base de datos
+repository: llamadas a la base de datos
 
 dao: datos resultantes de las consultas a la db
 
@@ -42,7 +42,3 @@ entities: entidades que sirven de tablas para la db
 repository: repositorio para llamadas jpa genericas
 
 secuirity: accesos y token
--config
--jwt
--payload
--service
