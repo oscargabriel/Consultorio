@@ -41,16 +41,6 @@ public class Usuarios {
     @Column(length = 40, nullable = false)
     private String clave;
 
-//============================================ASOCIACIONES============================================
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "USUARIO_ROL",
-        joinColumns = {
-                @JoinColumn(name = "usuario_id", foreignKey = @ForeignKey(name = "fk_usuariorol_usuarios"))
-        },
-        inverseJoinColumns = {
-                @JoinColumn(name = "rol_id",foreignKey = @ForeignKey(name = "fk_usuariorol_roles")) })
-    private Set<Roles> roles;
-
     public Usuarios() {
     }
 
@@ -147,11 +137,19 @@ public class Usuarios {
         this.clave = clave;
     }
 
-    public Set<Roles> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<Roles> roles) {
-        this.roles = roles;
+    @Override
+    public String toString() {
+        return "Usuarios{" +
+                "id=" + id +
+                ", cedula=" + cedula +
+                ", nombre='" + nombre + '\'' +
+                ", apellido='" + apellido + '\'' +
+                ", fechaNacimiento=" + fechaNacimiento +
+                ", direccion='" + direccion + '\'' +
+                ", telefono='" + telefono + '\'' +
+                ", email='" + email + '\'' +
+                ", usuario='" + usuario + '\'' +
+                ", clave='" + clave + '\'' +
+                '}';
     }
 }

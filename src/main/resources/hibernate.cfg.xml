@@ -20,5 +20,16 @@
 <!--    <property name="hibernate.hbm2ddl.import_files">import.sql,data.sql</property>-->
     <!-- entities -->
     <mapping class="com.example.Consultorio.entities.personas.Usuarios"/>
+    <mapping class="com.example.Consultorio.entities.Roles"/>
+    <mapping class="com.example.Consultorio.entities.Consultas"/>
+    <mapping class="com.example.Consultorio.entities.personas.Administrativos"/>
+    <mapping class="com.example.Consultorio.entities.personas.Doctores"/>
+    <mapping class="com.example.Consultorio.entities.personas.Pacientes"/>
+    <mapping class="com.example.Consultorio.entities.personas.Secretarias"/>
+    <mapping class="com.example.Consultorio.entities.personas.UsuarioRol"/>
+    <mapping class="com.example.Consultorio.entities.medicina.Tratamientos"/>
+    <mapping class="com.example.Consultorio.entities.medicina.Patologias"/>
+    <mapping class="com.example.Consultorio.entities.medicina.PatologiaConsulta"/>
+    <mapping class="com.example.Consultorio.entities.medicina.TratamientoConsulta"/>
   </session-factory>
 </hibernate-configuration>
