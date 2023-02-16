@@ -11,13 +11,14 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
  */
 public class HibernateUtil {
 
+
     private static StandardServiceRegistry registry;
 
     private static SessionFactory sessionFactory;
 
     /**
      * generar una session para las llamadas sql y hql hacia la base de datos
-     * @return
+     * @return mediante el patron singelton para generar un solo objeto
      */
     public static SessionFactory getSessionFactory(){
         if(sessionFactory == null){
@@ -36,10 +37,8 @@ public class HibernateUtil {
                 if(registry !=null){ StandardServiceRegistryBuilder.destroy(registry);}
             }
 
-
         }
         return sessionFactory;
-
 
     }
 
