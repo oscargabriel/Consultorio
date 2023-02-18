@@ -8,6 +8,7 @@ import com.example.Consultorio.security.Jwt.TokenProvider;
 import com.example.Consultorio.security.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,10 +26,17 @@ import java.util.List;
 public class UserController {
     private final Logger log = LoggerFactory.getLogger(UserController.class);
 
+    @Autowired
     private AuthenticationManager authenticationManager;
+
+    //@Autowired
     private TokenProvider jwtTokenUtil;
+
+    //@Autowired
     private UserService userService;
 
+    public UserController() {
+    }
 
     public UserController(TokenProvider jwtTokenUtil, UserService userService) {
         this.jwtTokenUtil = jwtTokenUtil;
@@ -39,33 +47,53 @@ public class UserController {
     @GetMapping("/findall")
     public List<User> findAll(){
         List<User> user = userService.findAll();
-
+        System.out.println("findall pta");
         return user;
     }
 
     @GetMapping("/hola")
     public String hola(){
         log.info("ejecutando saludo");
-        return "hola";
+        return "hola mundo";
     }
+
 
     @PostMapping("/authenticate")
     public ResponseEntity<?> generateToken(@RequestBody LoginUser loginUser) throws AuthenticationException {
+        System.out.println("----------------------------------iniciando autenticacion paso 1");
+        System.out.println(loginUser.getUsername()+" password: "+loginUser.getPassword());
 
-        final Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        loginUser.getUsername(),
-                        loginUser.getPassword()
-                )
-        );
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-        final String token = jwtTokenUtil.generateToken(authentication);
-        return ResponseEntity.ok(new AuthToken(token));
+        try {
+
+
+            Authentication authentication;
+
+            System.out.println(authenticationManager.authenticate(
+                    new UsernamePasswordAuthenticationToken(
+                            loginUser.getUsername(),
+                            loginUser.getPassword()
+                    )
+            )
+            );
+            /*System.out.println("----------------------------------iniciando autenticacion paso 2");
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            System.out.println("----------------------------------iniciando autenticacion paso 3");
+            final String token = jwtTokenUtil.generateToken(authentication);*/
+            System.out.println("----------------------------------finalizando autenticacion paso final sin try-catch");
+        }catch (Exception e){
+            System.out.println(e.getMessage() +" 1| "+ e.toString() +" 2| "+ "3| "+ e.getStackTrace());
+
+        }
+        System.out.println("----------------------------------finalizando autenticacion paso final");
+
+
+        return null;//ResponseEntity.ok(new AuthToken(token));
     }
 
 
     @PostMapping("/register")
     public User saveUser(@RequestBody UserDto user){
+        System.out.println("aqui si");
         // TODO lanzar excepción customizada
         // throw new EmailAlreadyExistsException("Email ocupado");
         return userService.save(user);

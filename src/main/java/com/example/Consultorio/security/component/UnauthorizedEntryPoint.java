@@ -18,7 +18,7 @@ public class UnauthorizedEntryPoint implements AuthenticationEntryPoint, Seriali
                          HttpServletResponse response,
                          AuthenticationException authException) throws IOException {
 
-        System.out.println("Ejecutando UnauthorizedEntryPoint");
+        System.out.println("Ejecutando UnauthorizedEntryPoint>security>component>unauthorizedEntryPoint");
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Error: No autorizado");
     }
 
