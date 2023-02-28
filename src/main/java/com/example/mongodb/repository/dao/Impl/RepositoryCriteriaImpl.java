@@ -1,15 +1,17 @@
 package com.example.mongodb.repository.dao.Impl;
 
 
+import com.example.mongodb.entities.User;
+import com.example.mongodb.repository.dao.RepositoryPersonalized;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-//@Repository
-public class RepositoryCriteriaImpl /*implements RepositoryPersonalized*/ {
-/*
+@Repository
+public class RepositoryCriteriaImpl implements RepositoryPersonalized {
     @Autowired
     MongoTemplate mongoTemplate;
 
@@ -61,7 +63,7 @@ public class RepositoryCriteriaImpl /*implements RepositoryPersonalized*/ {
 
     @Override
     public List<User> findAllUser() {
-        return null;
+        return mongoTemplate.findAll(User.class);
     }
 
     @Override
@@ -72,5 +74,5 @@ public class RepositoryCriteriaImpl /*implements RepositoryPersonalized*/ {
     @Override
     public User findUserById(Long id) {
         return null;
-    }*/
+    }
 }

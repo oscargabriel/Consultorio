@@ -65,8 +65,10 @@ public class ControllerDefaultImpl implements ControllerDefault {
     }
 
     @Override
+    @GetMapping("/findAll")
     public ResponseEntity<List<User>> findAllUser() {
-        return null;
+        return ResponseEntity.ok(userService.findAllUser());
+
     }
 
     @Override
