@@ -7,6 +7,7 @@ import com.example.mongodb.entities.User;
 import com.example.mongodb.service.Impl.UserServiceImpl;
 import com.example.mongodb.service.UserService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,23 +33,30 @@ public class ControllerDefaultImpl implements ControllerDefault {
     }
 
     @Override
+    @GetMapping("/hola_authenticate")
     public ResponseEntity<String> holaauthenticate() {
-        return null;
+        return ResponseEntity.ok("hola authenticate");
     }
 
     @Override
+    @PreAuthorize("hasRole('USER')")
+    @GetMapping("/hello_user")
     public ResponseEntity<String> userPing() {
-        return null;
+        return ResponseEntity.ok("hola USER");
     }
 
     @Override
+    @PreAuthorize("hasRole('EMPLOYEE')")
+    @GetMapping("/hello_employee")
     public ResponseEntity<String> employeePing() {
-        return null;
+        return ResponseEntity.ok("hola EMPLOYEE");
     }
 
     @Override
+    @PreAuthorize("hasRole('ADMIN')")
+    @GetMapping("/hello_admin")
     public ResponseEntity<String> adminPing() {
-        return null;
+        return ResponseEntity.ok("hola ADMIN");
     }
 
     @Override
@@ -72,8 +80,10 @@ public class ControllerDefaultImpl implements ControllerDefault {
     }
 
     @Override
-    public ResponseEntity<?> authenticate(LoginUser loginUser) {
-        return null;
+    @PostMapping("/authenticate")
+    public ResponseEntity<?> authenticate(@RequestBody LoginUser loginUser) {
+        System.out.println("controller");
+        return ResponseEntity.ok(userService.authenticate(loginUser));
     }
 
     @Override

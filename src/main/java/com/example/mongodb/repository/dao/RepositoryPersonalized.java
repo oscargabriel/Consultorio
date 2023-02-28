@@ -10,10 +10,6 @@ import java.util.List;
 public interface RepositoryPersonalized {
 
     //generationtype.identity no devuelve el siguiente id, se realizao de forma manual
-    Long UserID();
-    Long RoleID();
-    Long UserRoleID();
-
 
     //
     Boolean existByEmail(String email);

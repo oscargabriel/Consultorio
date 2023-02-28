@@ -6,8 +6,11 @@ import com.example.mongodb.repository.dao.RepositoryPersonalized;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.orm.jpa.EntityManagerFactoryBuilder;
 import org.springframework.data.mongodb.core.MongoTemplate;
+import org.springframework.data.mongodb.core.query.Criteria;
+import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -16,24 +19,11 @@ public class RepositoryCriteriaImpl implements RepositoryPersonalized {
     MongoTemplate mongoTemplate;
 
 
+
+
     public RepositoryCriteriaImpl(MongoTemplate mongoTemplate) {
 
         this.mongoTemplate = mongoTemplate;
-    }
-
-    @Override
-    public Long UserID() {
-        return null;
-    }
-
-    @Override
-    public Long RoleID() {
-        return null;
-    }
-
-    @Override
-    public Long UserRoleID() {
-        return null;
     }
 
     @Override
@@ -53,12 +43,21 @@ public class RepositoryCriteriaImpl implements RepositoryPersonalized {
 
     @Override
     public User findUserByUsername(String username) {
-        return null;
+        User user;
+        Query query = new Query();
+        query.addCriteria(Criteria.where("username").is(username));
+        user = mongoTemplate.find(query,User.class).get(0);
+        return user;
     }
 
     @Override
     public List<String> findRolesByUsername(String username) {
-        return null;
+        User user;
+        Query query = new Query();
+        query.addCriteria(Criteria.where("username").is(username));
+        user = mongoTemplate.find(query,User.class).get(0);
+        user.getRole().forEach(System.out::println);
+        return user.getRole();
     }
 
     @Override

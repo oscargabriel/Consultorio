@@ -1,6 +1,8 @@
 package com.example.mongodb.service;
 
 
+import com.example.mongodb.dto.AuthToken;
+import com.example.mongodb.dto.LoginUser;
 import com.example.mongodb.entities.User;
 
 
@@ -34,7 +36,7 @@ public interface UserService {
      * muestra los usuarios almacenados en la base de datos
      * @return
      */
-    //public AuthToken authenticate(LoginUser loginUser);
+    public AuthToken authenticate(LoginUser loginUser);
 
     public List<User> findAllUser();
 
