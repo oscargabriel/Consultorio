@@ -75,8 +75,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User update(User userdto) {
-        return null;
+    public User update(User user) {
+        return user;
     }
 
     @Override

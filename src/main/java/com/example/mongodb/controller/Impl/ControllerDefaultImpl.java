@@ -13,10 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.regex.Matcher;
@@ -107,13 +104,24 @@ public class ControllerDefaultImpl implements ControllerDefault {
     }
 
     @Override
-    public ResponseEntity<User> update(User user) {
-        return null;
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PostMapping("/update")
+    public ResponseEntity<User> update(@RequestBody User user) {
+        validarExprecionRegular(user.getEmail(), "email");
+        validarExprecionRegular(user.getUsername(), "username");
+        validarExprecionRegular(user.getPassword(), "password");
+        validarExprecionRegular(user.getPhone(), "phone");
+        validarExprecionRegular(user.getName(), "name");
+        validarExprecionRegular(user.getLastName(), "lastname");
+        return ResponseEntity.ok(userService.update(user));
     }
 
     @Override
-    public ResponseEntity<String> delete(Long id) {
-        return null;
+    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> delete(@PathVariable Long id) {
+        logger.info("eliminando al usuario con id: "+id);
+        return ResponseEntity.ok(userService.delete(id));
     }
 
     /**
