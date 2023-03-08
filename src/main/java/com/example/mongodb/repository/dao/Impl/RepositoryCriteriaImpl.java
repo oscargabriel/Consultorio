@@ -56,7 +56,6 @@ public class RepositoryCriteriaImpl implements RepositoryPersonalized {
         Query query = new Query();
         query.addCriteria(Criteria.where("username").is(username));
         user = mongoTemplate.find(query,User.class).get(0);
-        user.getRole().forEach(System.out::println);
         return user.getRole();
     }
 
@@ -72,6 +71,13 @@ public class RepositoryCriteriaImpl implements RepositoryPersonalized {
 
     @Override
     public User findUserById(Long id) {
-        return null;
+        User user;
+
+        Query query = new Query();
+        query.addCriteria(Criteria.where("id").is(id));
+        user = mongoTemplate.find(query,User.class).get(0);
+
+
+        return user;
     }
 }
